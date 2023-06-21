@@ -1,6 +1,5 @@
-@use 'unit' as *;
+@use "./../utils/unit" as *;
 
-// Position 관련 믹스인
 @mixin pos {
   position: absolute;
 }
@@ -42,35 +41,46 @@
   transform: translate(-50%, -50%);
 }
 
-
-// padding 관련 믹스인
-@mixin paddingY($paddingY: 0) {
-  padding-top: rem($paddingY);
-  padding-bottom: rem($paddingY);
-}
-
-@mixin paddingX($paddingX: 0) {
-  padding-left: rem($paddingX);
-  padding-right: rem($paddingX);
-}
-
-// margin 관련 믹스인
-@mixin marginY($marginY: 0) {
-  margin-top: rem($marginY);
-  margin-bottom: rem($marginY);
-}
-
-@mixin marginX($marginX: 0) {
-  margin-left: rem($marginX);
-  margin-right: rem($marginX);
-}
-
-@mixin autoMargin($marginX: auto) {
-  margin-left: $marginX;
-  margin-right: $marginX;
-}
-
 @mixin containerMax($max-width: 1024px) {
   max-width: rem($max-width);
   @include autoMargin;
+}
+
+@mixin padding($spacing) {
+  @include paddingX($spacing);
+  @include paddingY($spacing);
+}
+
+@mixin paddingX($spacing) {
+  padding-left: rem($spacing);
+  padding-right: rem($spacing);
+}
+
+@mixin paddingY($spacing) {
+  padding-top: rem($spacing);
+  padding-bottom: rem($spacing);
+}
+
+@mixin padding($spacing) {
+  padding: rem($spacing);
+}
+
+@mixin marginX($spacing) {
+  margin-left: rem($spacing);
+  margin-right: rem($spacing);
+}
+
+@mixin marginY($spacing) {
+  margin-top: rem($spacing);
+  margin-bottom: rem($spacing);
+}
+
+@mixin margin($spacing) {
+  @include marginX($spacing);
+  @include marginY($spacing);
+}
+
+@mixin autoMargin {
+  margin-left: auto;
+  margin-right: auto;
 }
